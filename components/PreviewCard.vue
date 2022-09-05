@@ -8,7 +8,7 @@
       class="p-3 text-xl font-extrabold text-gray-900 border-b dark:text-white"
       :class="twitterBorderColor"
     >
-      {{ props.title }}
+      {{ title }}
     </h2>
 
     <slot />
@@ -26,7 +26,7 @@
 <script setup>
 const { twitterBorderColor, defaultTransition } = useTailwindConfig();
 
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     default: ""
