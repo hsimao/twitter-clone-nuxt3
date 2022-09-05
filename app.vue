@@ -2,17 +2,17 @@
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-primary-900">
       <div
-        class="grid grid-cols-12 mx-auto border sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5"
+        class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5"
       >
         <!-- Left Sidebar -->
-        <div class="col-span-1 xl:col-span-2 hidden md:block border">
+        <div class="col-span-1 xl:col-span-2 hidden md:block">
           <div class="sticky top-0">
             <SidebarLeft />
           </div>
         </div>
 
         <!-- Main content -->
-        <div class="bg-green-500 col-span-10">
+        <main class="col-span-12 md:col-span-8 xl:col-span-6">
           main content
           <button
             @click="toggleDarkMode"
@@ -20,10 +20,14 @@
           >
             toggle dark
           </button>
-        </div>
+        </main>
 
         <!-- Right Sidebar -->
-        <div class="bg-blue-500">right sideber</div>
+        <div class="col-span-12 md:col-span-3 xl:col-span-4 hidden md:block">
+          <div class="sticky top-0">
+            <SidebarRight />
+          </div>
+        </div>
       </div>
     </div>
   </div>
