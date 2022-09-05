@@ -7,19 +7,19 @@
         <!-- Left Sidebar -->
         <div class="col-span-1 xl:col-span-2 hidden md:block">
           <div class="sticky top-0">
+            <button
+              @click="toggleDarkMode"
+              class="text-primary-500 py-2 px-6 border rounded-full"
+            >
+              toggle dark
+            </button>
             <SidebarLeft />
           </div>
         </div>
 
         <!-- Main content -->
         <main class="col-span-12 md:col-span-8 xl:col-span-6">
-          main content
-          <button
-            @click="toggleDarkMode"
-            class="text-primary-500 py-2 px-6 border rounded-full"
-          >
-            toggle dark
-          </button>
+          <router-view />
         </main>
 
         <!-- Right Sidebar -->
