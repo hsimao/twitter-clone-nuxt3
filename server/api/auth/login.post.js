@@ -1,13 +1,16 @@
 import bcrypt from "bcrypt";
 import { handleError } from "../../utils";
+import { generateTokens, sendRefreshToken } from "../../utils/jwt";
 import { getUserByUsername } from "../../db/users";
+import { createRefreshToken } from "../../db/refreshToken";
+import { userTransformer } from "../../transformers/user";
 
 export default defineEventHandler(async (event) => {
   const body = await useBody(event);
 
   const { username, password } = body;
 
-  // 參數錯誤
+  // invalid params
   if (!username || !password) {
     return handleError(event, 400, "Invalid params");
   }
@@ -24,5 +27,20 @@ export default defineEventHandler(async (event) => {
     return handleError(event, 400, "Username or password is invalid");
   }
 
-  return { user };
+  // generate token
+  const { accessToken, refreshToken } = generateTokens(user);
+
+  // refreshToken 儲存到 db
+  await createRefreshToken({
+    token: refreshToken,
+    userId: user.id
+  });
+
+  // refreshToken 儲存到 cookie
+  sendRefreshToken(event, refreshToken);
+
+  return {
+    accessToken,
+    user: userTransformer(user)
+  };
 });
