@@ -1,31 +1,19 @@
 import { sendError } from "h3";
 import { createUser } from "../../db/users";
 import { userTransformer } from "../../transformers/user";
+import { handleError } from "../../utils";
 
 export default defineEventHandler(async (event) => {
   const body = await useBody(event);
-  console.log("body", body);
 
   const { name, username, email, password, repeatPassword } = body;
 
   if (!name || !username || !email || !password || !repeatPassword) {
-    return sendError(
-      event,
-      createError({
-        statusCode: 400,
-        statusMessage: "Invalid params"
-      })
-    );
+    return handleError(event, 400, "Invalid params");
   }
 
   if (password !== repeatPassword) {
-    return sendError(
-      event,
-      createError({
-        statusCode: 400,
-        statusMessage: "Password do not match"
-      })
-    );
+    return handleError(event, 400, "Password do not match");
   }
 
   const userData = {
