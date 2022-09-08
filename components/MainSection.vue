@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-const { twitterBorderColor, defaultTransition } = useTailwindConfig();
+const { twitterBorderColor } = useTailwindConfig()
 
 defineProps({
   title: {
@@ -33,7 +33,7 @@ defineProps({
     type: Boolean,
     required: true
   }
-});
+})
 </script>
 
 <style lang="scss" scoped></style>

@@ -17,18 +17,18 @@
 </template>
 
 <script setup>
-const { defaultTransition } = useTailwindConfig();
+const { defaultTransition } = useTailwindConfig()
 
 const props = defineProps({
   active: {
     type: Boolean,
     default: false
   }
-});
+})
 
 const textClass = computed(() =>
-  props.active ? "font-semibold" : "font-normal"
-);
+  props.active ? 'font-semibold' : 'font-normal'
+)
 </script>
 
 <style lang="scss" scoped></style>

@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-const loading = ref(false);
+const loading = ref(false)
 </script>
 
 <style lang="scss" scoped></style>

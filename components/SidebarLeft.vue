@@ -29,69 +29,69 @@
 </template>
 
 <script setup>
-import HomeIcon from "@heroicons/vue/24/solid/HomeIcon.js";
-import HashtagIcon from "@heroicons/vue/24/outline/HashtagIcon.js";
-import BellIcon from "@heroicons/vue/24/outline/BellIcon.js";
-import InboxIcon from "@heroicons/vue/24/outline/InboxIcon.js";
-import BookmarkIcon from "@heroicons/vue/24/outline/BookmarkIcon.js";
-import DocumentTextIcon from "@heroicons/vue/24/outline/DocumentTextIcon.js";
-import UserIcon from "@heroicons/vue/24/outline/UserIcon.js";
-import EllipsisHorizontalCircleIcon from "@heroicons/vue/24/outline/EllipsisHorizontalCircleIcon.js";
+import HomeIcon from '@heroicons/vue/24/solid/HomeIcon.js'
+import HashtagIcon from '@heroicons/vue/24/outline/HashtagIcon.js'
+import BellIcon from '@heroicons/vue/24/outline/BellIcon.js'
+import InboxIcon from '@heroicons/vue/24/outline/InboxIcon.js'
+import BookmarkIcon from '@heroicons/vue/24/outline/BookmarkIcon.js'
+import DocumentTextIcon from '@heroicons/vue/24/outline/DocumentTextIcon.js'
+import UserIcon from '@heroicons/vue/24/outline/UserIcon.js'
+import EllipsisHorizontalCircleIcon from '@heroicons/vue/24/outline/EllipsisHorizontalCircleIcon.js'
 
-const { defaultTransition } = useTailwindConfig();
+const { defaultTransition } = useTailwindConfig()
 
 const tabs = [
   // Home
   {
-    name: "Home",
+    name: 'Home',
     icon: HomeIcon,
-    link: "/"
+    link: '/'
   },
   // Hashtag
   {
-    name: "Explore",
+    name: 'Explore',
     icon: HashtagIcon,
-    link: "#"
+    link: '#'
   },
   // 通知
   {
-    name: "Notifications",
+    name: 'Notifications',
     icon: BellIcon,
-    link: "#"
+    link: '#'
   },
   // Messages
   {
-    name: "Messages",
+    name: 'Messages',
     icon: InboxIcon,
-    link: "#"
+    link: '#'
   },
   // 收藏
   {
-    name: "Bookmarks",
+    name: 'Bookmarks',
     icon: BookmarkIcon,
-    link: "#"
+    link: '#'
   },
   // Lists
   {
-    name: "Lists",
+    name: 'Lists',
     icon: DocumentTextIcon,
-    link: "#"
+    link: '#'
   },
   // Profile
   {
-    name: "Profile",
+    name: 'Profile',
     icon: UserIcon,
-    link: "#"
+    link: '#'
   },
   // More
   {
-    name: "More",
+    name: 'More',
     icon: EllipsisHorizontalCircleIcon,
-    link: "#"
+    link: '#'
   }
-];
+]
 
-const currentPath = computed(() => useRoute().path);
+const currentPath = computed(() => useRoute().path)
 </script>
 
 <style lang="scss" scoped></style>

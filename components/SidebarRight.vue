@@ -22,36 +22,36 @@
 <script setup>
 const happeningItems = ref([
   {
-    title: "SpaceX",
-    count: "18.8k Tweets"
+    title: 'SpaceX',
+    count: '18.8k Tweets'
   },
   {
-    title: "#CodingIsFun",
-    count: "8.8k Tweets"
+    title: '#CodingIsFun',
+    count: '8.8k Tweets'
   },
   {
-    title: "#artforall",
-    count: "1.8k Tweets"
+    title: '#artforall',
+    count: '1.8k Tweets'
   }
-]);
+])
 
 const followItems = ref([
   {
-    name: "Joe Biden",
-    handle: "@JoeBiden",
-    image: "https://picsum.photos/200/200"
+    name: 'Joe Biden',
+    handle: '@JoeBiden',
+    image: 'https://picsum.photos/200/200'
   },
   {
-    name: "Joe Biden",
-    handle: "@JoeBiden",
-    image: "https://picsum.photos/200/200"
+    name: 'Joe Biden',
+    handle: '@JoeBiden',
+    image: 'https://picsum.photos/200/200'
   },
   {
-    name: "Joe Biden",
-    handle: "@JoeBiden",
-    image: "https://picsum.photos/200/200"
+    name: 'Joe Biden',
+    handle: '@JoeBiden',
+    image: 'https://picsum.photos/200/200'
   }
-]);
+])
 </script>
 
 <style lang="scss" scoped></style>

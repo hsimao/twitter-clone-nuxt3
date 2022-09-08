@@ -24,14 +24,14 @@
 </template>
 
 <script setup>
-const { twitterBorderColor, defaultTransition } = useTailwindConfig();
+const { twitterBorderColor, defaultTransition } = useTailwindConfig()
 
 defineProps({
   title: {
     type: String,
-    default: ""
+    default: ''
   }
-});
+})
 </script>
 
 <style lang="scss" scoped></style>

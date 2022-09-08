@@ -23,15 +23,15 @@
 defineProps({
   name: {
     type: String,
-    default: ""
+    default: ''
   },
   handle: {
     type: String,
-    default: ""
+    default: ''
   },
   image: {
     type: String,
-    default: ""
+    default: ''
   }
-});
+})
 </script>

@@ -11,11 +11,11 @@
 defineProps({
   title: {
     type: String,
-    default: ""
+    default: ''
   },
   count: {
     type: String,
-    default: ""
+    default: ''
   }
-});
+})
 </script>

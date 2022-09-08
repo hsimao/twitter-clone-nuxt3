@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-const darkMode = ref(false);
+const darkMode = ref(false)
 
-const toggleDarkMode = () => (darkMode.value = !darkMode.value);
+const toggleDarkMode = () => (darkMode.value = !darkMode.value)
 </script>
