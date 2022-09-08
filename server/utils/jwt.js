@@ -18,6 +18,26 @@ const generateRefreshToken = (user) => {
   })
 }
 
+export const verifyRefreshToken = (token) => {
+  try {
+    const config = useRuntimeConfig()
+    return jwt.verify(token, config.jwtRefreshSecret)
+  } catch (err) {
+    console.warn(err)
+    return false
+  }
+}
+
+export const verifyAccessToken = (token) => {
+  try {
+    const config = useRuntimeConfig()
+    return jwt.verify(token, config.jwtAccessSecret)
+  } catch (err) {
+    console.warn(err)
+    return false
+  }
+}
+
 export const generateTokens = (user) => {
   const accessToken = generateAccessToken(user)
   const refreshToken = generateRefreshToken(user)
