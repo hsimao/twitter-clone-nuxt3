@@ -1,8 +1,11 @@
 <template>
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-primary-900">
+      <!-- loading -->
+      <LoadingPage v-if="isAuthLoading" />
+
       <!-- App -->
-      <div v-if="user" class="min-h-full border">
+      <div v-else-if="user" class="min-h-full border">
         <div
           class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5"
         >
@@ -33,13 +36,16 @@
         </div>
       </div>
 
+      <!-- auth form -->
       <AuthPage v-else />
     </div>
   </div>
 </template>
 
 <script setup>
-const { useAuthUser, initAuth } = useAuth()
+const { useAuthUser, initAuth, useAuthLoading } = useAuth()
+
+const isAuthLoading = useAuthLoading()
 
 const user = useAuthUser()
 
