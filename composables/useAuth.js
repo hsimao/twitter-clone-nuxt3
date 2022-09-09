@@ -1,3 +1,5 @@
+import jwtDecode from 'jwt-decode'
+
 export default () => {
   const useAuthToken = () => useState('auth_token')
   const useAuthUser = () => useState('auth_user')
@@ -47,11 +49,29 @@ export default () => {
     if (data.user) setUser(data.user)
   }
 
+  // 在 token 過期時間重新調用 refreshToken
+  const reRefreshAccessToken = () => {
+    const authToken = useAuthToken()
+
+    if (!authToken.value) return
+
+    const jwt = jwtDecode(authToken.value)
+
+    // 過期一分鐘之前就重新獲取 token
+    const newRefreshTime = jwt.exp - 1000 * 60
+
+    setTimeout(async () => {
+      await refreshToken()
+      reRefreshAccessToken()
+    }, newRefreshTime)
+  }
+
   const initAuth = async () => {
     setIsAuthLoading(true)
 
     await refreshToken().catch(console.log)
     await getUser().catch(console.log)
+    reRefreshAccessToken()
 
     setIsAuthLoading(false)
   }
