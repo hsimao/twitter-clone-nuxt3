@@ -21,10 +21,15 @@ model User {
   profileImage String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
   // Refresh Token
   refreshToken RefreshToken[]
+
   // Tweet
   tweet Tweet[]
+
+  // MediaFile
+  mediaFiles MediaFile[]
 }
 
 model RefreshToken {
@@ -55,5 +60,22 @@ model Tweet {
   // 自己擁有的所有回覆
   replies Tweet[] @relation("replies")
 
+  // MediaFile
+  mediaFiles MediaFile[]
+}
 
+model MediaFile {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  url String
+  providerPublicId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // User
+  user User @relation(fields: [userId], references: [id])
+  userId String @db.ObjectId
+
+  // Tweets
+  tweet Tweet? @relation(fields: [tweetId], references: [id])
+  tweetId String? @db.ObjectId
 }
