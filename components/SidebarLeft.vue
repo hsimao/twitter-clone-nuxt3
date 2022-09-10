@@ -7,7 +7,7 @@
     >
       <nuxt-link to="/">
         <div class="w-8 h-8">
-          <LogoTwitter />
+          <SvgTwitter />
         </div>
       </nuxt-link>
     </div>
