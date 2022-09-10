@@ -24,6 +24,18 @@
         </template>
         <template #name>{{ tab.name }}</template>
       </SidebarTab>
+
+      <!-- Tweet button xl 顯示-->
+      <UIButton class="hidden xl:block" size="lg" liquid>
+        <span class="font-bold">Tweet</span>
+      </UIButton>
+
+      <!-- Tweet button 小於 xl 顯示 -->
+      <UIButton class="block xl:hidden">
+        <div class="w-6 h-6 font-bold">
+          <PencilIcon />
+        </div>
+      </UIButton>
     </div>
   </div>
 </template>
@@ -37,6 +49,7 @@ import BookmarkIcon from '@heroicons/vue/24/outline/BookmarkIcon.js'
 import DocumentTextIcon from '@heroicons/vue/24/outline/DocumentTextIcon.js'
 import UserIcon from '@heroicons/vue/24/outline/UserIcon.js'
 import EllipsisHorizontalCircleIcon from '@heroicons/vue/24/outline/EllipsisHorizontalCircleIcon.js'
+import PencilIcon from '@heroicons/vue/24/outline/PencilIcon.js'
 
 const { defaultTransition } = useTailwindConfig()
 

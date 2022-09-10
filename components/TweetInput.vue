@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- top area -->
+    <!-- Top area -->
     <div class="flex items-center flex-shrink-0 p-4 pb-0">
       <!-- user avatar -->
       <div class="flex w-12 items-start">
@@ -20,8 +20,6 @@
         />
       </div>
     </div>
-
-    <!-- bottom area -->
 
     <!-- File Selector -->
     <div class="p-4 pl-16">
@@ -43,36 +41,43 @@
       />
     </div>
 
-    <!-- Icons -->
+    <!-- Bottom area -->
     <div class="flex p-2 pl-14">
-      <!-- File upload -->
-      <div class="tweet-input-svg" @click="handleImageClick">
-        <SvgImage />
+      <!-- icons -->
+      <div class="flex w-full text-white">
+        <!-- File upload -->
+        <div class="tweet-input-svg" @click="handleImageClick">
+          <SvgImage />
+        </div>
+
+        <!-- Gif -->
+        <div class="tweet-input-svg">
+          <SvgGif />
+        </div>
+
+        <!-- Chart -->
+        <div class="tweet-input-svg">
+          <SvgChart />
+        </div>
+
+        <!-- Emoji -->
+        <div class="tweet-input-svg">
+          <SvgEmoji />
+        </div>
+
+        <!-- Calendar -->
+        <div class="tweet-input-svg">
+          <SvgCalendar />
+        </div>
       </div>
 
-      <!-- Gif -->
-      <div class="tweet-input-svg">
-        <SvgGif />
-      </div>
-
-      <!-- Chart -->
-      <div class="tweet-input-svg">
-        <SvgChart />
-      </div>
-
-      <!-- Emoji -->
-      <div class="tweet-input-svg">
-        <SvgEmoji />
-      </div>
-
-      <!-- Calendar -->
-      <div class="tweet-input-svg">
-        <SvgCalendar />
+      <!-- submit button -->
+      <div class="ml-auto">
+        <UIButton size="sm" @click="handleSubmit">
+          <span class="font-bold">Tweet</span>
+        </UIButton>
       </div>
     </div>
-
-    <!-- submit button -->
-    <UIButton @click="handleSubmit">Tweet</UIButton>
   </div>
 </template>
 
@@ -105,10 +110,7 @@ const handleImageChange = (event) => {
   // update imagePreview
   const reader = new FileReader()
 
-  reader.onload = (event) => {
-    imagePreview.value = event.target.result
-    alert(event.target.result)
-  }
+  reader.onload = (event) => (imagePreview.value = event.target.result)
 
   reader.readAsDataURL(file)
 }
