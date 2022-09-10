@@ -73,7 +73,7 @@
 
       <!-- submit button -->
       <div class="ml-auto">
-        <UIButton size="sm" @click="handleSubmit">
+        <UIButton size="sm" @click="handleSubmit" :disabled="isDisabled">
           <span class="font-bold">Tweet</span>
         </UIButton>
       </div>
@@ -94,6 +94,8 @@ const props = defineProps({
 
 const text = ref('')
 const profileImage = computed(() => props.user?.profileImage)
+
+const isDisabled = computed(() => !text.value.trim())
 
 // Image upload logic
 const imageInputRef = ref(null)
