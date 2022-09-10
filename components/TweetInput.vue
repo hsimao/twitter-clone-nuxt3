@@ -72,7 +72,7 @@
     </div>
 
     <!-- submit button -->
-    <button @click="handleSubmit">Tweet</button>
+    <UIButton @click="handleSubmit">Tweet</UIButton>
   </div>
 </template>
 
@@ -114,8 +114,11 @@ const handleImageChange = (event) => {
 }
 
 const handleSubmit = () => {
+  const formatText = text.value.trim()
+  if (!formatText) return
+
   emits('onSubmit', {
-    text: text.value,
+    text: formatText,
     mediaFiles: [selectedFile.value]
   })
 }
