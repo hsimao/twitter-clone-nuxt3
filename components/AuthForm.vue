@@ -5,16 +5,15 @@
 
       <UIInput
         v-model="password"
+        @keyup="handleLogin"
         type="password"
         label="Password"
         placeholder="********"
       />
 
-      {{ isLoading }}
-
-      <button @click="handleLogin">Login</button>
-
-      {{ user }}
+      <UIButton @click="handleLogin" liquid :disabled="disabled">
+        Login
+      </UIButton>
     </div>
   </div>
 </template>
@@ -24,7 +23,11 @@ const password = ref('')
 const username = ref('')
 const isLoading = ref(false)
 
-const { login, useAuthUser } = useAuth()
+const disabled = computed(() => {
+  return !username.value || !password.value || isLoading.value
+})
+
+const { login } = useAuth()
 
 const handleLogin = async () => {
   isLoading.value = true
@@ -36,8 +39,6 @@ const handleLogin = async () => {
 
   isLoading.value = false
 }
-
-const user = useAuthUser()
 </script>
 
 <style lang="scss" scoped></style>
