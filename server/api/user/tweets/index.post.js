@@ -26,6 +26,12 @@ export default defineEventHandler(async (event) => {
     authorId: userId
   }
 
+  // 回覆到某一貼文
+  const replyTo = fields.replyTo
+  if (replyTo && replyTo !== 'null') {
+    tweetData.replyToId = replyTo
+  }
+
   // create tweet
   const tweet = await createTweet(tweetData)
 
