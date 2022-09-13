@@ -1,4 +1,5 @@
 export default () => {
+  // create tweet
   const postTweet = (formData) => {
     const form = new FormData()
 
@@ -17,7 +18,15 @@ export default () => {
     })
   }
 
+  // get tweets
+  const getHomeTweets = () => {
+    return useFetchApi('/api/tweets', {
+      method: 'GET'
+    })
+  }
+
   return {
-    postTweet
+    postTweet,
+    getHomeTweets
   }
 }
