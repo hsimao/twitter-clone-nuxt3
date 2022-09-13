@@ -17,6 +17,11 @@
       >
         <img :src="image.url" class="w-full rounded-2xl" />
       </div>
+
+      <!-- actions -->
+      <div class="mt-2">
+        <TweetItemActions :tweet="tweet" />
+      </div>
     </div>
   </div>
 </template>

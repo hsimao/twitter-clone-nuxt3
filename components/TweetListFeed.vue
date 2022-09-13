@@ -8,7 +8,7 @@
     <!-- tweets -->
     <div
       v-else
-      class="pb-4 border-b cursor-pointer hover:bg-gray-100 dark:hover-bg-primary-300"
+      class="pb-4 border-b cursor-pointer hover:bg-gray-100 dark:hover:bg-primary-300"
       :class="[twitterBorderColor, defaultTransition]"
       v-for="tweet in tweets"
       :key="tweet.id"
