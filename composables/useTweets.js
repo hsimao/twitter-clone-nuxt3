@@ -25,8 +25,16 @@ export default () => {
     })
   }
 
+  // get tweet by id
+  const getTweetById = (id) => {
+    return useFetchApi(`/api/tweets/${id}`, {
+      method: 'GET'
+    })
+  }
+
   return {
     postTweet,
-    getHomeTweets
+    getHomeTweets,
+    getTweetById
   }
 }

@@ -26,8 +26,6 @@ export default defineEventHandler(async (event) => {
     ]
   })
 
-  console.log('tweets', tweets)
-
   return {
     tweets: tweets.map(tweetTransformer)
   }

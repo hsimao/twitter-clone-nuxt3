@@ -25,7 +25,7 @@
       <p v-if="hasReplyTo" class="block text-sm">
         <span class="text-gray-500"> Replying to </span>
         <nuxt-link :to="replyToTweetUrl" class="text-blue-400">
-          {{ replayToLinkText }}
+          {{ replayToLinkText }} {{ replyToTweetUrl }}
         </nuxt-link>
       </p>
     </div>
@@ -45,7 +45,7 @@ const author = props.tweet.author
 const hasReplyTo = computed(() => !!props.tweet.replyTo)
 
 const replyToTweetUrl = computed(() =>
-  hasReplyTo.value ? `/status/${props.tweet.replyTo.id}` : ''
+  hasReplyTo.value ? `/tweet/${props.tweet.replyTo.id}` : ''
 )
 
 const replayToLinkText = computed(() =>

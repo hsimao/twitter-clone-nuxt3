@@ -1,18 +1,16 @@
 <template>
-  <div class="">
-    <MainSection title="Home" :loading="loading">
-      <!-- meta -->
-      <Head>
-        <Title>Home / Twitter</Title>
-      </Head>
+  <MainSection title="Home" :loading="loading">
+    <!-- meta -->
+    <Head>
+      <Title>Home / Twitter</Title>
+    </Head>
 
-      <div class="border-b" :class="twitterBorderColor">
-        <TweetForm :user="user" />
-      </div>
+    <div class="border-b" :class="twitterBorderColor">
+      <TweetForm :user="user" />
+    </div>
 
-      <TweetListFeed :tweets="homeTweets" />
-    </MainSection>
-  </div>
+    <TweetListFeed :tweets="homeTweets" />
+  </MainSection>
 </template>
 
 <script setup>
@@ -34,5 +32,3 @@ onBeforeMount(async () => {
   loading.value = false
 })
 </script>
-
-<style lang="scss" scoped></style>
