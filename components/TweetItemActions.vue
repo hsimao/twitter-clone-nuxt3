@@ -1,7 +1,11 @@
 <template>
   <div class="w-full flex items-center justify-around">
     <!-- 留言 -->
-    <TweetItemActionsIcon color="blue" :size="iconSize">
+    <TweetItemActionsIcon
+      color="blue"
+      :size="iconSize"
+      @on-click="emits('onCommentClick')"
+    >
       <template #icon="{ iconclass }">
         <ChatBubbleOvalLeftEllipsisIcon :class="iconclass" />
       </template>
@@ -48,6 +52,8 @@ import ChatBubbleOvalLeftEllipsisIcon from '@heroicons/vue/24/outline/ChatBubble
 import ArrowPathIcon from '@heroicons/vue/24/outline/ArrowPathIcon.js'
 import HeartIcon from '@heroicons/vue/24/outline/HeartIcon.js'
 import ArrowUpTrayIcon from '@heroicons/vue/24/outline/ArrowUpTrayIcon.js'
+
+const emits = defineEmits(['onCommentClick'])
 
 const props = defineProps({
   tweet: {

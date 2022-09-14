@@ -4,12 +4,17 @@
       <UISpinner />
     </div>
 
-    <TweetInput
-      v-else
-      :user="user"
-      @onSubmit="handleFormSubmit"
-      :placeholder="placeholder"
-    />
+    <div v-else>
+      <!-- reply tweet -->
+      <TweetItem v-if="currentShowReply" :tweet="replyTo" hideActions />
+
+      <!-- input -->
+      <TweetInput
+        :user="user"
+        @onSubmit="handleFormSubmit"
+        :placeholder="placeholder"
+      />
+    </div>
   </div>
 </template>
 
@@ -29,10 +34,16 @@ const props = defineProps({
   replyTo: {
     type: Object,
     default: null
+  },
+  showReply: {
+    type: Boolean,
+    default: false
   }
 })
 
 const loading = ref(false)
+
+const currentShowReply = computed(() => props.showReply && props.replyTo)
 
 const handleFormSubmit = async (data) => {
   loading.value = true

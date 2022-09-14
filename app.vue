@@ -48,6 +48,8 @@
           <TweetForm
             v-if="user"
             :user="user"
+            :replyTo="replyTweet"
+            showReply
             @on-success="handleTweetFormSuccess"
           />
         </UIModal>
@@ -68,9 +70,11 @@ const darkMode = ref(false)
 const toggleDarkMode = () => (darkMode.value = !darkMode.value)
 
 // tweet modal
-const { togglePostTweetModal, usePostTweetModal } = useTweets()
+const { togglePostTweetModal, usePostTweetModal, setReplyTo, useReplyTweet } =
+  useTweets()
 
 const postTweetModal = usePostTweetModal()
+const replyTweet = useReplyTweet()
 
 const handleTweetFormSuccess = async (tweet) => {
   togglePostTweetModal(false)
@@ -78,7 +82,18 @@ const handleTweetFormSuccess = async (tweet) => {
   await navigateTo(`/tweet/${tweet.id}`)
 }
 
-onBeforeMount(() => {
-  initAuth()
+// 監聽全局自定義 emit 事件
+const emitter = useEmitter()
+
+// 監聽 replyTweet
+emitter.$on('replyTweet', (tweet) => {
+  // close modal
+  togglePostTweetModal(true)
+
+  //save reply tweet
+  setReplyTo(tweet)
 })
+
+// init
+onBeforeMount(() => initAuth())
 </script>

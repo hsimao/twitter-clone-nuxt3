@@ -23,7 +23,12 @@
 
       <!-- actions -->
       <div class="mt-2">
-        <TweetItemActions :tweet="tweet" :compact="compact" />
+        <TweetItemActions
+          v-if="!hideActions"
+          :tweet="tweet"
+          :compact="compact"
+          @on-comment-click="handleCommentClick"
+        />
       </div>
     </div>
   </div>
@@ -38,6 +43,10 @@ const props = defineProps({
   compact: {
     type: Boolean,
     default: false
+  },
+  hideActions: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -46,6 +55,10 @@ const { twitterBorderColor } = useTailwindConfig()
 const wrapperClass = computed(() => (props.compact ? 'ml-16' : 'ml-2 mt-4'))
 
 const textSize = computed(() => (props.compact ? 'text-base' : 'text-2xl'))
+
+// 發送事件到 global emit
+const emitter = useEmitter()
+const handleCommentClick = () => emitter.$emit('replyTweet', props.tweet)
 </script>
 
 <style lang="scss" scoped></style>
