@@ -6,7 +6,7 @@
     </Head>
 
     <div class="border-b" :class="twitterBorderColor">
-      <TweetForm :user="user" />
+      <TweetForm :user="user" @on-success="handleFormSuccess" />
     </div>
 
     <TweetListFeed :tweets="homeTweets" />
@@ -20,6 +20,12 @@ const homeTweets = ref([])
 const { useAuthUser } = useAuth()
 const user = useAuthUser()
 const { twitterBorderColor } = useTailwindConfig()
+
+const handleFormSuccess = async (tweet) => {
+  await navigateTo({
+    path: `/tweet/${tweet.id}`
+  })
+}
 
 // get tweets
 const { getHomeTweets } = useTweets()

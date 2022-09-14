@@ -16,6 +16,7 @@ export default defineEventHandler(async (event) => {
       replies: {
         include: {
           author: true,
+          mediaFiles: true,
           replyTo: {
             include: {
               author: true

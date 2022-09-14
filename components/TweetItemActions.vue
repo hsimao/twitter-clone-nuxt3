@@ -1,6 +1,7 @@
 <template>
   <div class="w-full flex items-center justify-around">
-    <TweetItemActionsIcon color="blue" :size="iconSize">
+    <!-- 留言 -->
+    <TweetItemActionsIcon color="blue" :size="iconSize" @click="handleToDetail">
       <template #icon="{ iconclass }">
         <ChatBubbleOvalLeftEllipsisIcon :class="iconclass" />
       </template>
@@ -64,6 +65,8 @@ const showStats = computed(() => props.compact)
 const iconSize = computed(() => (props.compact ? 5 : 8))
 
 const generateRandomNumber = () => Math.floor(Math.random() * 100)
+
+const handleToDetail = () => navigateTo({ path: `/tweet/${props.tweet.id}` })
 </script>
 
 <style lang="scss" scoped></style>

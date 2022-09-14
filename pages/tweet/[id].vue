@@ -23,8 +23,7 @@ const getTweet = async (id) => {
 
   // 回首頁
   if (!response) {
-    const router = useRouter()
-    return router.push('/')
+    return navigateTo({ path: '/' })
   }
 
   tweet.value = response.tweet
@@ -35,4 +34,10 @@ const getTweet = async (id) => {
 onBeforeMount(() => {
   getTweet(useRoute().params.id)
 })
+
+// 監聽 route
+watch(
+  () => useRoute().fullPath,
+  () => getTweet(useRoute().params.id)
+)
 </script>

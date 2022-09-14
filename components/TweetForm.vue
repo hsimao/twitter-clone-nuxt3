@@ -14,6 +14,8 @@
 </template>
 
 <script setup>
+const emits = defineEmits(['onSuccess'])
+
 const props = defineProps({
   user: {
     type: Object,
@@ -40,6 +42,7 @@ const handleFormSubmit = async (data) => {
       mediaFiles: data.mediaFiles,
       replyTo: props.replyTo?.id
     })
+    .then((response) => emits('onSuccess', response.tweet))
     .catch(console.log)
   loading.value = false
 }
