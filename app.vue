@@ -12,10 +12,7 @@
           <!-- Left Sidebar -->
           <div class="col-span-1 xl:col-span-2 hidden md:block">
             <div class="sticky top-0">
-              <SidebarLeft
-                @on-tweet="togglePostTweetModal(true)"
-                @on-toggle-mode="toggleDarkMode"
-              />
+              <SidebarLeft @on-tweet="togglePostTweetModal(true)" />
             </div>
           </div>
 
@@ -64,8 +61,6 @@ const user = useAuthUser()
 
 const darkMode = ref(false)
 
-const toggleDarkMode = () => (darkMode.value = !darkMode.value)
-
 // tweet modal
 const { togglePostTweetModal, usePostTweetModal, setReplyTo, useReplyTweet } =
   useTweets()
@@ -89,6 +84,11 @@ emitter.$on('replyTweet', (tweet) => {
 
   //save reply tweet
   setReplyTo(tweet)
+})
+
+// 監聽 dark mode toggle
+emitter.$on('toggleDarkMode', () => {
+  darkMode.value = !darkMode.value
 })
 
 // init

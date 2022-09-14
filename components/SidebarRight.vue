@@ -19,6 +19,8 @@
         <PreviewCardItemFollow v-bind="follow" />
       </PreviewCardItem>
     </PreviewCard>
+
+    <SidebarRightFooter />
   </div>
 </template>
 

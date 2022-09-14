@@ -13,7 +13,7 @@
     </div>
 
     <button
-      @click="emits('onToggleMode')"
+      @click="handleToggleDarkMode"
       class="text-primary-500 py-2 px-6 border rounded-full"
     >
       Toggle dark
@@ -64,7 +64,7 @@ import UserIcon from '@heroicons/vue/24/outline/UserIcon.js'
 import EllipsisHorizontalCircleIcon from '@heroicons/vue/24/outline/EllipsisHorizontalCircleIcon.js'
 import PencilIcon from '@heroicons/vue/24/outline/PencilIcon.js'
 
-const emits = defineEmits(['onTweet', 'onToggleMode'])
+const emits = defineEmits(['onTweet'])
 
 const { defaultTransition } = useTailwindConfig()
 
@@ -120,6 +120,10 @@ const tabs = [
 ]
 
 const currentPath = computed(() => useRoute().path)
+
+//  global emit toggleDarkMode
+const emitter = useEmitter()
+const handleToggleDarkMode = () => emitter.$emit('toggleDarkMode')
 </script>
 
 <style lang="scss" scoped></style>
