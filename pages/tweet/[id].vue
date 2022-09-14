@@ -20,13 +20,19 @@ const getTweet = async (id) => {
   loading.value = true
 
   const response = await useTweets().getTweetById(id).catch(console.log)
+
+  // 回首頁
+  if (!response) {
+    const router = useRouter()
+    return router.push('/')
+  }
+
   tweet.value = response.tweet
 
   loading.value = false
 }
 
 onBeforeMount(() => {
-  const { params } = useRoute()
-  getTweet(params.id)
+  getTweet(useRoute().params.id)
 })
 </script>

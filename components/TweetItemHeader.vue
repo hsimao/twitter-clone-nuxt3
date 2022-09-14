@@ -25,7 +25,7 @@
       <p v-if="hasReplyTo" class="block text-sm">
         <span class="text-gray-500"> Replying to </span>
         <nuxt-link :to="replyToTweetUrl" class="text-blue-400">
-          {{ replayToLinkText }} {{ replyToTweetUrl }}
+          {{ replayToLinkText }}
         </nuxt-link>
       </p>
     </div>
