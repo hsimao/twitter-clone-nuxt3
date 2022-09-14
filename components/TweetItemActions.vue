@@ -1,31 +1,43 @@
 <template>
   <div class="w-full flex items-center justify-around">
-    <TweetItemActionsIcon color="blue">
+    <TweetItemActionsIcon color="blue" :size="iconSize">
       <template #icon="{ iconclass }">
         <ChatBubbleOvalLeftEllipsisIcon :class="iconclass" />
       </template>
-      {{ tweet.repliesCount }}
+
+      <template #default v-if="showStats">
+        {{ tweet.repliesCount }}
+      </template>
     </TweetItemActionsIcon>
 
-    <TweetItemActionsIcon color="green">
+    <TweetItemActionsIcon color="green" :size="iconSize">
       <template #icon="{ iconclass }">
         <ArrowPathIcon :class="iconclass" />
       </template>
-      {{ generateRandomNumber() }}
+
+      <template #default v-if="showStats">
+        {{ generateRandomNumber() }}
+      </template>
     </TweetItemActionsIcon>
 
-    <TweetItemActionsIcon color="red">
+    <TweetItemActionsIcon color="red" :size="iconSize">
       <template #icon="{ iconclass }">
         <HeartIcon :class="iconclass" />
       </template>
-      {{ generateRandomNumber() }}
+
+      <template #default v-if="showStats">
+        {{ generateRandomNumber() }}
+      </template>
     </TweetItemActionsIcon>
 
-    <TweetItemActionsIcon color="blue">
+    <TweetItemActionsIcon color="blue" :size="iconSize">
       <template #icon="{ iconclass }">
         <ArrowUpTrayIcon :class="iconclass" />
       </template>
-      {{ generateRandomNumber() }}
+
+      <template #default v-if="showStats">
+        {{ generateRandomNumber() }}
+      </template>
     </TweetItemActionsIcon>
   </div>
 </template>
@@ -36,12 +48,20 @@ import ArrowPathIcon from '@heroicons/vue/24/outline/ArrowPathIcon.js'
 import HeartIcon from '@heroicons/vue/24/outline/HeartIcon.js'
 import ArrowUpTrayIcon from '@heroicons/vue/24/outline/ArrowUpTrayIcon.js'
 
-defineProps({
+const props = defineProps({
   tweet: {
     type: Object,
     required: true
+  },
+  compact: {
+    type: Boolean,
+    default: false
   }
 })
+
+const showStats = computed(() => props.compact)
+
+const iconSize = computed(() => (props.compact ? 5 : 8))
 
 const generateRandomNumber = () => Math.floor(Math.random() * 100)
 </script>

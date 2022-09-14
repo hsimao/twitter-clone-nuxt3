@@ -3,7 +3,7 @@
     <div
       :class="`p-2 group-hover:bg-${color}-100 group-hover:text-${color}-400 rounded-full dark:group-hover:bg-opacity-20 ${defaultTransition}`"
     >
-      <slot name="icon" iconclass="w-5 h-5" />
+      <slot name="icon" :iconclass="`w-${size} h-${size}`" />
     </div>
     <span :class="`ml-1 hover:text-${color}-400 group-hover:text-${color}-400`">
       <slot />
@@ -16,6 +16,10 @@ defineProps({
   color: {
     type: String,
     required: true
+  },
+  size: {
+    type: Number,
+    default: 5
   }
 })
 
