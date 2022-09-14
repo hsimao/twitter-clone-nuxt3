@@ -17,6 +17,7 @@
       <SidebarTab
         v-for="tab in tabs"
         :key="tab.name"
+        :link="tab.link"
         :active="tab.link === currentPath"
       >
         <template #icon>
