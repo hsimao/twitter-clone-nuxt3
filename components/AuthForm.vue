@@ -5,7 +5,7 @@
 
       <UIInput
         v-model="password"
-        @keyup="handleLogin"
+        @keyup.enter="handleLogin"
         type="password"
         label="Password"
         placeholder="********"
