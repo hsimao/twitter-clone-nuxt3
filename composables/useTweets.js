@@ -6,6 +6,9 @@ export default () => {
     // text
     form.append('text', formData.text)
 
+    // 回覆的 tweet
+    if (formData.replyTo) form.append('replyTo', formData.replyTo)
+
     // files
     formData.mediaFiles.forEach((mediaFile, index) => {
       form.append(`media_file_${index}`, mediaFile)

@@ -2,7 +2,7 @@
   <div>
     <TweetItem :tweet="tweet" />
 
-    <TweetForm placeholder="Tweet your reply" :user="user" />
+    <TweetForm placeholder="Tweet your reply" :user="user" :reply-to="tweet" />
 
     <TweetListFeed :tweets="replies" />
   </div>

@@ -22,6 +22,11 @@ const props = defineProps({
   placeholder: {
     type: String,
     default: "What's happening ?"
+  },
+  // 要回覆的 tweet
+  replyTo: {
+    type: Object,
+    default: null
   }
 })
 
@@ -29,7 +34,13 @@ const loading = ref(false)
 
 const handleFormSubmit = async (data) => {
   loading.value = true
-  await useTweets().postTweet(data).catch(console.log)
+  await useTweets()
+    .postTweet({
+      text: data.text,
+      mediaFiles: data.mediaFiles,
+      replyTo: props.replyTo?.id
+    })
+    .catch(console.log)
   loading.value = false
 }
 </script>
