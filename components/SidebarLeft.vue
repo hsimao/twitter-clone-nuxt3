@@ -12,6 +12,13 @@
       </nuxt-link>
     </div>
 
+    <button
+      @click="emits('onToggleMode')"
+      class="text-primary-500 py-2 px-6 border rounded-full"
+    >
+      Toggle dark
+    </button>
+
     <!-- Tabs -->
     <div class="mt-2 space-y-3">
       <SidebarTab
@@ -31,7 +38,7 @@
         class="hidden xl:block"
         size="lg"
         liquid
-        @click="$emit('onTweet')"
+        @click="emits('onTweet')"
       >
         <span class="font-bold">Tweet</span>
       </UIButton>
@@ -57,7 +64,7 @@ import UserIcon from '@heroicons/vue/24/outline/UserIcon.js'
 import EllipsisHorizontalCircleIcon from '@heroicons/vue/24/outline/EllipsisHorizontalCircleIcon.js'
 import PencilIcon from '@heroicons/vue/24/outline/PencilIcon.js'
 
-const emits = defineEmits(['onTweet'])
+const emits = defineEmits(['onTweet', 'onToggleMode'])
 
 const { defaultTransition } = useTailwindConfig()
 
