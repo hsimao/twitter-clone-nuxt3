@@ -37,9 +37,10 @@ export default () => {
   }
 
   // get tweets
-  const getHomeTweets = () => {
+  const getTweets = (params = {}) => {
     return useFetchApi('/api/tweets', {
-      method: 'GET'
+      method: 'GET',
+      params: params
     })
   }
 
@@ -52,7 +53,7 @@ export default () => {
 
   return {
     postTweet,
-    getHomeTweets,
+    getTweets,
     getTweetById,
     togglePostTweetModal,
     usePostTweetModal,

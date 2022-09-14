@@ -28,11 +28,11 @@ const handleFormSuccess = async (tweet) => {
 }
 
 // get tweets
-const { getHomeTweets } = useTweets()
+const { getTweets } = useTweets()
 onBeforeMount(async () => {
   loading.value = true
 
-  const { tweets } = await getHomeTweets().catch(console.wran)
+  const { tweets } = await getTweets().catch(console.wran)
   homeTweets.value = !!tweets ? tweets : []
 
   loading.value = false

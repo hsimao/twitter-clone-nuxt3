@@ -1,5 +1,8 @@
 <template>
   <div class="flex flex-col">
+    <!-- Search bar -->
+    <SearchBar />
+
     <!-- Preview card : What's happening -->
     <PreviewCard title="What's happening">
       <PreviewCardItem v-for="whatsHappening in happeningItems">
