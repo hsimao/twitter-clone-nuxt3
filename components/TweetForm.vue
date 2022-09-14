@@ -36,14 +36,17 @@ const loading = ref(false)
 
 const handleFormSubmit = async (data) => {
   loading.value = true
-  await useTweets()
-    .postTweet({
-      text: data.text,
-      mediaFiles: data.mediaFiles,
-      replyTo: props.replyTo?.id
-    })
+
+  const { postTweet } = useTweets()
+
+  await postTweet({
+    text: data.text,
+    mediaFiles: data.mediaFiles,
+    replyTo: props.replyTo?.id
+  })
     .then((response) => emits('onSuccess', response.tweet))
     .catch(console.log)
+
   loading.value = false
 }
 </script>

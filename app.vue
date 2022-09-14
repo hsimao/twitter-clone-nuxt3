@@ -18,7 +18,7 @@
               >
                 toggle dark
               </button>
-              <SidebarLeft />
+              <SidebarLeft @on-tweet="togglePostTweetModal(true)" />
             </div>
           </div>
 
@@ -38,6 +38,20 @@
 
       <!-- auth form -->
       <AuthPage v-else />
+
+      <!-- tweet form 彈窗 -->
+      <ClientOnly>
+        <UIModal
+          :is-open="postTweetModal"
+          @on-close="togglePostTweetModal(false)"
+        >
+          <TweetForm
+            v-if="user"
+            :user="user"
+            @on-success="handleTweetFormSuccess"
+          />
+        </UIModal>
+      </ClientOnly>
     </div>
   </div>
 </template>
@@ -52,6 +66,17 @@ const user = useAuthUser()
 const darkMode = ref(false)
 
 const toggleDarkMode = () => (darkMode.value = !darkMode.value)
+
+// tweet modal
+const { togglePostTweetModal, usePostTweetModal } = useTweets()
+
+const postTweetModal = usePostTweetModal()
+
+const handleTweetFormSuccess = async (tweet) => {
+  togglePostTweetModal(false)
+
+  await navigateTo(`/tweet/${tweet.id}`)
+}
 
 onBeforeMount(() => {
   initAuth()

@@ -27,12 +27,17 @@
       </SidebarTab>
 
       <!-- Tweet button xl 顯示-->
-      <UIButton class="hidden xl:block" size="lg" liquid>
+      <UIButton
+        class="hidden xl:block"
+        size="lg"
+        liquid
+        @click="$emit('onTweet')"
+      >
         <span class="font-bold">Tweet</span>
       </UIButton>
 
       <!-- Tweet button 小於 xl 顯示 -->
-      <UIButton class="block xl:hidden">
+      <UIButton class="block xl:hidden" @click="$emit('onTweet')">
         <div class="w-6 h-6 font-bold">
           <PencilIcon />
         </div>
@@ -51,6 +56,8 @@ import DocumentTextIcon from '@heroicons/vue/24/outline/DocumentTextIcon.js'
 import UserIcon from '@heroicons/vue/24/outline/UserIcon.js'
 import EllipsisHorizontalCircleIcon from '@heroicons/vue/24/outline/EllipsisHorizontalCircleIcon.js'
 import PencilIcon from '@heroicons/vue/24/outline/PencilIcon.js'
+
+const emits = defineEmits(['onTweet'])
 
 const { defaultTransition } = useTailwindConfig()
 

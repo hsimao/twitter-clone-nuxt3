@@ -1,4 +1,10 @@
 export default () => {
+  const usePostTweetModal = () => useState('post_tweet_modal', () => false)
+
+  const togglePostTweetModal = (status) => {
+    const postTweetModal = usePostTweetModal()
+    postTweetModal.value = status
+  }
   // create tweet
   const postTweet = (formData) => {
     const form = new FormData()
@@ -38,6 +44,8 @@ export default () => {
   return {
     postTweet,
     getHomeTweets,
-    getTweetById
+    getTweetById,
+    togglePostTweetModal,
+    usePostTweetModal
   }
 }
