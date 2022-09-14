@@ -12,7 +12,11 @@
           <!-- Left Sidebar -->
           <div class="col-span-1 xl:col-span-2 hidden md:block">
             <div class="sticky top-0">
-              <SidebarLeft @on-tweet="togglePostTweetModal(true)" />
+              <SidebarLeft
+                @on-tweet="togglePostTweetModal(true)"
+                @on-logout="handleUserLogout"
+                :user="user"
+              />
             </div>
           </div>
 
@@ -72,6 +76,10 @@ const handleTweetFormSuccess = async (tweet) => {
   togglePostTweetModal(false)
 
   await navigateTo(`/tweet/${tweet.id}`)
+}
+
+const handleUserLogout = () => {
+  console.warn('logout')
 }
 
 // 監聽全局自定義 emit 事件
