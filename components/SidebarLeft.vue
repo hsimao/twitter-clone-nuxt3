@@ -59,11 +59,7 @@
     >
       <div class="flex flex-row">
         <!-- avatar -->
-        <img
-          v-if="user.profileImage"
-          class="w-10 h-10 rounded-full"
-          :src="user.profileImage"
-        />
+        <img class="w-10 h-10 rounded-full" :src="user.profileImage" />
 
         <!-- name -->
         <div class="flex-col hidden ml-2 xl:block">
