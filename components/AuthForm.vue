@@ -1,5 +1,11 @@
 <template>
-  <div>
+  <div class="w-full">
+    <!-- logo -->
+    <div class="flex justify-center">
+      <SvgTwitter class="w-10 h-10" />
+    </div>
+
+    <!-- form -->
     <div class="pt-5 space-y-6">
       <UIInput v-model="username" label="Username" placeholder="@username" />
 
@@ -19,8 +25,8 @@
 </template>
 
 <script setup>
-const password = ref('')
-const username = ref('')
+const password = ref('123456')
+const username = ref('jack')
 const isLoading = ref(false)
 
 const disabled = computed(() => {
