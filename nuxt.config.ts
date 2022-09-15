@@ -1,8 +1,6 @@
-import { defineNuxtConfig } from 'nuxt'
-
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@vueuse/nuxt'],
+  modules: ['@nuxtjs/tailwindcss'],
   runtimeConfig: {
     // Jwt
     jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET,
@@ -15,5 +13,6 @@ export default defineNuxtConfig({
   },
   build: {
     transpile: ['@heroicons/vue']
-  }
+  },
+  ...(process.env.NODE_ENV === 'production' ? { builder: 'webpack' } : {})
 })
