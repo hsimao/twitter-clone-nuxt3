@@ -53,13 +53,17 @@
 
     <!-- User info -->
     <div
+      v-if="user"
       class="w-14 xl:w-full hover:bg-gray-100 dark:hover:bg-primary-800 flex flex-row items-center justify-center px-2 py-2 mx-auto mt-auto mb-5 rounded-full cursor-pointer"
       :class="defaultTransition"
       @click="emits('onLogout')"
     >
       <div class="flex flex-row">
         <!-- avatar -->
-        <img class="w-10 h-10 rounded-full" :src="user.profileImage" />
+        <img
+          class="w-10 h-10 rounded-full object-cover"
+          :src="user.profileImage"
+        />
 
         <!-- name -->
         <div class="flex-col hidden ml-2 xl:block">
