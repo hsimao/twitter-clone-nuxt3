@@ -11,3 +11,11 @@ export const getRefreshTokenByToken = (token) => {
     where: { token }
   })
 }
+
+export const removeRefreshToken = (token) => {
+  return prisma.refreshToken.delete({
+    where: {
+      token
+    }
+  })
+}

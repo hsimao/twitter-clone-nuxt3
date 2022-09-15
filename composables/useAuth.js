@@ -76,8 +76,18 @@ export default () => {
     setIsAuthLoading(false)
   }
 
+  const logout = async () => {
+    await useFetchApi('/api/auth/logout', {
+      method: 'POST'
+    }).catch(console.log)
+
+    setToken(null)
+    setUser(null)
+  }
+
   return {
     login,
+    logout,
     initAuth,
     useAuthUser,
     useAuthToken,

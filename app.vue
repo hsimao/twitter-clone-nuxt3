@@ -14,7 +14,7 @@
             <div class="sticky top-0">
               <SidebarLeft
                 @on-tweet="togglePostTweetModal(true)"
-                @on-logout="handleUserLogout"
+                @on-logout="logout"
                 :user="user"
               />
             </div>
@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-const { useAuthUser, initAuth, useAuthLoading } = useAuth()
+const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth()
 
 const isAuthLoading = useAuthLoading()
 
@@ -76,10 +76,6 @@ const handleTweetFormSuccess = async (tweet) => {
   togglePostTweetModal(false)
 
   await navigateTo(`/tweet/${tweet.id}`)
-}
-
-const handleUserLogout = () => {
-  console.warn('logout')
 }
 
 // 監聽全局自定義 emit 事件
