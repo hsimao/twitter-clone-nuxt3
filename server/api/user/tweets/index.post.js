@@ -1,7 +1,7 @@
 import formidable from 'formidable'
 import { createTweet } from '~~/server/db/tweets'
 import { tweetTransformer } from '~~/server/transformers/tweet'
-import { createMediaFile } from '~~/server/db/mediafiles'
+import { createMediaFile } from '~~/server/db/mediaFiles'
 import { uploadToCloudinary } from '~~/server/utils/cloudinary'
 
 export default defineEventHandler(async (event) => {
